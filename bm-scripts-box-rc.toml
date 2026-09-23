@@ -5,7 +5,7 @@ id = "b2bb2c56-1419-449c-b847-d3238a6fd988"
 name = "Aria2 下载"
 desc = "Aria2 GUI 脚本，内置可视化窗口，粘贴链接即可一键下载。支持多行批量任务，HTTP/HTTPS/FTP 直链、磁力链，命令行实时展示下载速度，底层由 aria2 驱动"
 icon = "./imgs/rocket.ico"
-version = "1.0.0"
+version = "1.1.0"
 
 [bmscriptsbox.runtime]
 language = "powershell"
