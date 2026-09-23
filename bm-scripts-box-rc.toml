@@ -1,0 +1,65 @@
+[bmscriptsbox]
+
+[bmscriptsbox.info]
+id = "b2bb2c56-1419-449c-b847-d3238a6fd988"
+name = "Aria2 下载"
+desc = "Aria2 GUI 脚本，内置可视化窗口，粘贴链接即可一键下载。支持多行批量任务，HTTP/HTTPS/FTP 直链、磁力链，命令行实时展示下载速度，底层由 aria2 驱动"
+icon = "./imgs/rocket.ico"
+version = "1.0.0"
+
+[bmscriptsbox.runtime]
+language = "powershell"
+language_version = ">=5.1"
+entry = "aria2-download.ps1"
+terminal = "always"
+binaries = [{name = "aria2"}]
+
+[bmscriptsbox.triggers]
+
+  [bmscriptsbox.triggers.context_menu]
+  enabled = true
+  targets = ["background"]
+
+  [bmscriptsbox.triggers.shortcut]
+  enabled = true
+  input_type = ""
+
+[[bmscriptsbox.inputs]]
+name = "download_link"
+label = "下载链接(支持磁力)"
+type = "list"
+description = "支持 HTTP/HTTPS/FTP 直链与 magnet 磁力链，每行一条"
+
+[[bmscriptsbox.params]]
+name = "download_dir"
+label = "下载目录"
+type = "str"
+default = ""
+description = "留空则下载到系统「下载」文件夹"
+
+[[bmscriptsbox.params]]
+name = "max_speed"
+label = "速度限制"
+type = "str"
+default = "0"
+choices = ["0", "500K", "1M", "5M", "10M"]
+choice_labels = { "0" = "不限速", "500K" = "500KB/s", "1M" = "1MB/s", "5M" = "5MB/s", "10M" = "10MB/s" }
+
+[[bmscriptsbox.outputs]]
+name = "download_dir"
+type = "str"
+description = "下载目录（文件保存位置）"
+
+[[bmscriptsbox.outputs]]
+name = "links_count"
+type = "str"
+description = "本次下载的链接条数"
+
+[bmscriptsbox.node]
+enabled = true
+
+[bmscriptsbox.schedule]
+enabled = true
+
+[bmscriptsbox.params_form]
+enabled = true
